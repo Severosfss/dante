@@ -233,6 +233,26 @@ footer {
     color: var(--primary-color);
 }
 
+.visit-counter {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.visit-counter i {
+    color: var(--primary-color);
+}
+
+#visit-count {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
 footer p {
     color: var(--text-secondary);
     font-size: 0.9rem;

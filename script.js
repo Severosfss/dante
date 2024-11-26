@@ -127,6 +127,45 @@ function displayError(message) {
     }, 5000);
 }
 
+// Função para gerenciar o contador de visitas
+function updateVisitCounter() {
+    const storageKey = 'danteSevenGamesVisits';
+    let visits = parseInt(localStorage.getItem(storageKey)) || 0;
+    
+    // Incrementa o contador apenas uma vez por sessão
+    const sessionKey = 'danteSevenGamesSession';
+    if (!sessionStorage.getItem(sessionKey)) {
+        visits++;
+        localStorage.setItem(storageKey, visits);
+        sessionStorage.setItem(sessionKey, 'true');
+    }
+
+    // Formata o número com separadores de milhar
+    const formattedVisits = new Intl.NumberFormat('pt-BR').format(visits);
+    
+    // Atualiza o contador na página com animação
+    const counterElement = document.getElementById('visit-count');
+    const currentValue = parseInt(counterElement.textContent.replace(/\D/g, '')) || 0;
+    
+    // Animação de contagem
+    const duration = 1000; // 1 segundo
+    const steps = 50;
+    const increment = (visits - currentValue) / steps;
+    let current = currentValue;
+    let step = 0;
+
+    const animation = setInterval(() => {
+        current += increment;
+        counterElement.textContent = Math.round(current).toLocaleString('pt-BR');
+        step++;
+        
+        if (step >= steps) {
+            clearInterval(animation);
+            counterElement.textContent = formattedVisits;
+        }
+    }, duration / steps);
+}
+
 // Add loading animation
 document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
@@ -199,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Inicializa o contador de visitas
+    updateVisitCounter();
 });
 
 // Start loading the YouTube API when the page loads
