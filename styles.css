@@ -92,22 +92,13 @@ main {
     margin-bottom: 4rem;
 }
 
-h2 {
-    font-size: 1.8rem;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-h2 i {
-    color: var(--primary-color);
+.featured-video {
+    margin-bottom: 2rem;
 }
 
 .video-player-wrapper {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     aspect-ratio: 16/9;
     background-color: var(--background-light);
@@ -116,10 +107,69 @@ h2 i {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.video-player-wrapper iframe {
-    width: 100%;
-    height: 100%;
+.featured-description {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.featured-description h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.description-container {
+    position: relative;
+}
+
+.description-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.description-text.expanded {
+    max-height: 1000px;
+}
+
+.read-more-btn {
+    background: linear-gradient(to bottom, transparent, var(--background-light) 50%);
     border: none;
+    color: var(--primary-color);
+    padding: 2rem 1rem 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--secondary-color);
+}
+
+.read-more-btn i {
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn.expanded i {
+    transform: rotate(180deg);
 }
 
 .videos-grid {
@@ -189,6 +239,12 @@ footer p {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .featured-content {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem;

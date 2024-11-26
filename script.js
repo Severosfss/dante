@@ -23,7 +23,7 @@ function initClient() {
     });
 }
 
-// Load the featured video
+// Load the featured video and its description
 function loadFeaturedVideo() {
     const playerDiv = document.getElementById('featured-player');
     playerDiv.innerHTML = `
@@ -36,6 +36,21 @@ function loadFeaturedVideo() {
             allowfullscreen
         ></iframe>
     `;
+
+    // Fetch video details
+    gapi.client.youtube.videos.list({
+        part: 'snippet',
+        id: FEATURED_VIDEO_ID
+    }).then(response => {
+        const video = response.result.items[0];
+        if (video) {
+            document.getElementById('featured-title').textContent = video.snippet.title;
+            document.getElementById('featured-desc').textContent = video.snippet.description;
+        }
+    }).catch(error => {
+        console.error('Error loading video details:', error);
+        displayError('Erro ao carregar detalhes do vídeo em destaque.');
+    });
 }
 
 // Load channel videos
@@ -167,6 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+
+    // Adicionar funcionalidade ao botão "Leia mais"
+    const readMoreBtn = document.getElementById('read-more');
+    const descriptionText = document.getElementById('featured-desc');
+    
+    if (readMoreBtn && descriptionText) {
+        readMoreBtn.addEventListener('click', () => {
+            descriptionText.classList.toggle('expanded');
+            readMoreBtn.classList.toggle('expanded');
+            const btnText = readMoreBtn.querySelector('.btn-text');
+            if (descriptionText.classList.contains('expanded')) {
+                btnText.textContent = 'Mostrar menos';
+            } else {
+                btnText.textContent = 'Leia mais';
+            }
+        });
+    }
 });
 
 // Start loading the YouTube API when the page loads
