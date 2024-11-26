@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dante Seven Games - Perfil Gamer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Dante Seven Games</span>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <span class="profile-name">Dante Seven</span>
+                        <img src="imagens/1.JPG" alt="Foto de Perfil" class="profile-pic">
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="featured-video">
+                    <h2><i class="fas fa-star"></i> Vídeo em Destaque</h2>
+                    <div id="featured-player" class="video-player-wrapper"></div>
+                </div>
+            </section>
+
+            <section class="channel-videos">
+                <h2><i class="fas fa-video"></i> Últimos Vídeos</h2>
+                <div id="videos-container" class="videos-grid"></div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@DanteSevenGames" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 Dante Seven Games. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
